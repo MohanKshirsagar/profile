@@ -3,204 +3,1804 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohan Kshirsagar | Robotics & AI Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Mohan Kshirsagar | Senior Python AI ML Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #f0f4f8;
-      color: #333;
+    :root {
+      --primary-color: #1a1a2e;
+      --secondary-color: #5e60ce;
+      --accent-color: #ff006e;
+      --success-color: #06ffa5;
+      --warning-color: #ffbe0b;
+      --text-primary: #ffffff;
+      --text-secondary: #b8b8d1;
+      --bg-primary: #0f0f23;
+      --bg-secondary: #16213e;
+      --bg-card: rgba(30, 30, 60, 0.7);
+      --gradient-1: linear-gradient(135deg, #5e60ce 0%, #ff006e 100%);
+      --gradient-2: linear-gradient(135deg, #06ffa5 0%, #0ff 100%);
+      --shadow-glow: 0 0 50px rgba(94, 96, 206, 0.5);
     }
 
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Matrix Rain Effect Background */
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.1;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(94, 96, 206, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(6, 255, 165, 0.1) 0%, transparent 50%);
+      animation: bgPulse 20s ease-in-out infinite;
+    }
+
+    @keyframes bgPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(5deg); }
+    }
+
+    /* Particle Effect */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--success-color);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+      opacity: 0.5;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Header Section */
     header {
-      background: linear-gradient(120deg, #004e92, #000428);
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--primary-color) 100%);
       color: white;
-      padding: 3rem 1rem;
+      padding: 5rem 1rem;
       text-align: center;
       position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--success-color);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(94, 96, 206, 0.03) 10px,
+        rgba(94, 96, 206, 0.03) 20px
+      );
+      animation: slide 20s linear infinite;
+    }
+
+    @keyframes slide {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .profile-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
     }
 
     header img {
-      width: 140px;
-      height: 140px;
+      width: 180px;
+      height: 180px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #fff;
-      margin-bottom: 1rem;
+      border: 4px solid var(--success-color);
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 30px rgba(6, 255, 165, 0.5));
     }
 
+    .profile-container::before,
+    .profile-container::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      animation: orbit 10s linear infinite;
+    }
+
+    .profile-container::before {
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      border: 2px solid var(--secondary-color);
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+    }
+
+    .profile-container::after {
+      top: -30px;
+      left: -30px;
+      right: -30px;
+      bottom: -30px;
+      border: 2px solid var(--accent-color);
+      border-left-color: transparent;
+      border-right-color: transparent;
+      animation-delay: -5s;
+    }
+
+    @keyframes orbit {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      font-weight: 900;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 30px rgba(94, 96, 206, 0.5));
+    }
+
+    .typing-text {
+      font-size: 1.3rem;
+      color: var(--success-color);
+      font-family: 'Fira Code', monospace;
+      position: relative;
+      display: inline-block;
+    }
+
+    .typing-text::after {
+      content: '|';
+      position: absolute;
+      right: -10px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Navigation */
     nav {
-      background: #002244;
+      background: rgba(22, 33, 62, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem;
+      border-bottom: 2px solid var(--secondary-color);
+    }
+
+    .nav-container {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      padding: 0.75rem;
+      gap: 0.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     nav a {
-      color: white;
+      color: var(--text-secondary);
       text-decoration: none;
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #005792;
-      border-radius: 6px;
-      transition: background 0.3s;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-1);
+      transition: left 0.5s;
+      z-index: -1;
     }
 
     nav a:hover {
-      background: #0077b6;
+      color: var(--text-primary);
+      transform: translateY(-2px);
+      border-color: var(--success-color);
+      box-shadow: 0 5px 20px rgba(6, 255, 165, 0.3);
     }
 
+    nav a:hover::before {
+      left: 0;
+    }
+
+    /* Main Content */
     main {
-      max-width: 1000px;
-      margin: 2rem auto;
+      max-width: 1400px;
+      margin: 3rem auto;
       padding: 0 1rem;
     }
 
     section {
-      margin-bottom: 3rem;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 4rem;
+      background: var(--bg-card);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(94, 96, 206, 0.2);
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient-1);
     }
 
     h2 {
-      color: #003366;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5rem;
+      color: var(--text-primary);
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 20px;
+      font-weight: 900;
     }
 
-    ul {
-      padding-left: 1.5rem;
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 30px;
+      background: var(--gradient-2);
+      box-shadow: 0 0 20px rgba(6, 255, 165, 0.5);
     }
 
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(94, 96, 206, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid rgba(94, 96, 206, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--success-color) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .stat-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(6, 255, 165, 0.3);
+      border-color: var(--success-color);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: linear-gradient(135deg, rgba(30, 30, 60, 0.7) 0%, rgba(94, 96, 206, 0.1) 100%);
+      padding: 2rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(94, 96, 206, 0.3);
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(94, 96, 206, 0.3);
+      border-color: var(--success-color);
+    }
+
+    .skill-category h3 {
+      color: var(--success-color);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .skill-category i {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .skill-tag {
+      background: rgba(6, 255, 165, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(6, 255, 165, 0.3);
+      transition: all 0.3s ease;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--success-color);
+      color: var(--success-color);
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(6, 255, 165, 0.3);
+      background: rgba(6, 255, 165, 0.2);
+    }
+
+    /* Research Publications */
+    .publication-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .publication-item {
+      background: linear-gradient(135deg, rgba(30, 30, 60, 0.7) 0%, rgba(94, 96, 206, 0.1) 100%);
+      margin-bottom: 2rem;
+      padding: 2.5rem;
+      border-radius: 20px;
+      border-left: 4px solid var(--gradient-2);
+      transition: all 0.3s ease;
+      position: relative;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(94, 96, 206, 0.2);
+    }
+
+    .publication-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 20px 40px rgba(6, 255, 165, 0.2);
+      border-left-color: var(--success-color);
+    }
+
+    .pub-number {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-2);
+      color: var(--bg-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 20px rgba(6, 255, 165, 0.5);
+    }
+
+    .pub-title {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      padding-right: 70px;
+      line-height: 1.6;
+    }
+
+    .pub-venue {
+      color: var(--success-color);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .pub-details {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pub-details span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .pub-impact {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.3rem 1rem;
+      background: rgba(255, 190, 11, 0.2);
+      border-radius: 20px;
+      color: var(--warning-color);
+      font-size: 0.85rem;
+      border: 1px solid var(--warning-color);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, rgba(94, 96, 206, 0.2) 0%, rgba(255, 0, 110, 0.2) 100%);
+      color: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(94, 96, 206, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: radial-gradient(circle, rgba(6, 255, 165, 0.1) 0%, transparent 50%);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
+    }
+
+    .project-card:hover::before {
+      top: -150%;
+      left: -150%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 30px 60px rgba(94, 96, 206, 0.4);
+      border-color: var(--success-color);
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--success-color);
+    }
+
+    .project-card p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tech-tag {
+      padding: 0.3rem 0.8rem;
+      background: rgba(6, 255, 165, 0.2);
+      border-radius: 15px;
+      font-size: 0.8rem;
+      color: var(--success-color);
+      border: 1px solid var(--success-color);
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 30px;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--secondary-color), var(--success-color));
+      box-shadow: 0 0 20px rgba(6, 255, 165, 0.5);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 80px;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--success-color);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(6, 255, 165, 0.2), 0 0 20px rgba(6, 255, 165, 0.5);
+      z-index: 2;
+    }
+
+    .timeline-content {
+      background: rgba(30, 30, 60, 0.7);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(94, 96, 206, 0.3);
+    }
+
+    .timeline-content:hover {
+      transform: translateX(10px);
+      box-shadow: 0 15px 40px rgba(6, 255, 165, 0.2);
+      border-color: var(--success-color);
+    }
+
+    .timeline-date {
+      color: var(--success-color);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .timeline-title {
+      color: var(--text-primary);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .timeline-content ul {
+      padding-left: 20px;
+      color: var(--text-secondary);
+    }
+
+    .timeline-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Achievements */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .achievement-card {
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.2) 0%, rgba(94, 96, 206, 0.2) 100%);
+      color: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 0, 110, 0.3);
+    }
+
+    .achievement-card::after {
+      content: '🏆';
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 2.5rem;
+      opacity: 0.2;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-10px) rotate(-3deg) scale(1.05);
+      box-shadow: 0 25px 50px rgba(255, 0, 110, 0.3);
+      border-color: var(--success-color);
+    }
+
+    .achievement-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(30, 30, 60, 0.7) 0%, rgba(94, 96, 206, 0.1) 100%);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(94, 96, 206, 0.3);
+    }
+
+    .contact-item:hover {
+      background: linear-gradient(135deg, rgba(6, 255, 165, 0.1) 0%, rgba(94, 96, 206, 0.2) 100%);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(6, 255, 165, 0.2);
+      border-color: var(--success-color);
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-1);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 20px rgba(94, 96, 206, 0.5);
+    }
+
+    .contact-item h4 {
+      margin: 0;
+      color: var(--success-color);
+      font-weight: 700;
+    }
+
+    .contact-item a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item:hover a {
+      color: var(--text-primary);
+    }
+
+    /* Patent Cards */
+    .patents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .patent-card {
+      background: linear-gradient(135deg, rgba(255, 190, 11, 0.1) 0%, rgba(94, 96, 206, 0.2) 100%);
+      padding: 2rem;
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 190, 11, 0.3);
+    }
+
+    .patent-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 190, 11, 0.3);
+      border-color: var(--warning-color);
+    }
+
+    .patent-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 190, 11, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--warning-color);
+      border: 1px solid var(--warning-color);
+    }
+
+    .patent-card h4 {
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      color: var(--warning-color);
+    }
+
+    .patent-card p {
+      font-size: 0.95rem;
+      margin: 0;
+      opacity: 0.9;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .patent-info {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
     footer {
-      background: #002244;
+      background: var(--bg-secondary);
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 3rem 1rem;
+      position: relative;
+      border-top: 2px solid var(--secondary-color);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      background: rgba(94, 96, 206, 0.2);
+      color: var(--text-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(94, 96, 206, 0.3);
+    }
+
+    .social-links a:hover {
+      background: var(--gradient-1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(94, 96, 206, 0.5);
+      color: white;
+      border-color: var(--success-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      section {
+        padding: 2rem 1.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .timeline-item {
+        padding-left: 60px;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-marker {
+        left: 10px;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+
+      .projects-grid,
+      .patents-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader-circle {
+      width: 100px;
+      height: 100px;
+      border: 3px solid rgba(94, 96, 206, 0.3);
+      border-top-color: var(--success-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Scroll Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--gradient-2);
+      z-index: 9999;
+      transition: width 0.2s ease;
     }
   </style>
 </head>
 <body>
-  <header data-aos="zoom-in">
-    <img src="img\mohan.jpg" alt="Mohan Kshirsagar" />
-    <h1>Mohan Kshirsagar</h1>
-    <p>Senior Robotics & AI Engineer | Embedded Systems | ML Developer</p>
-  </header>
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+  
+  <div class="progress-bar" id="progressBar"></div>
+  
+  <div class="bg-animation"></div>
+  <div class="particles" id="particles"></div>
+  <canvas class="matrix-bg" id="matrix"></canvas>
 
+  <header data-aos="zoom-in">
+    <div class="profile-container">
+      <img src="img\mohan.jpg" alt="Mohan Kshirsagar" />
+    </div>
+    <h1>Mohan Kshirsagar</h1>
+    <p style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-secondary);">Senior Python AI ML Engineer | 8+ Years Experience</p>
+    <div class="typing-text" id="typingText"></div>
+  </header>
   <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#research">Research</a>
-    <a href="#experience">Experience</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-container">
+      <a href="#about"><i class="fas fa-user-astronaut"></i> About</a>
+      <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+      <a href="#projects"><i class="fas fa-rocket"></i> Projects</a>
+      <a href="#research"><i class="fas fa-flask"></i> Research</a>
+      <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+      <a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a>
+      <a href="#contact"><i class="fas fa-satellite"></i> Contact</a>
+    </div>
   </nav>
 
   <main>
     <section id="about" data-aos="fade-up">
       <h2>About Me</h2>
-      <p>I am a software engineer with 8+ years of industry experience in product development, robotic systems, embedded programming, AI/ML, and computer vision. Currently, I am working at Persistent Systems Ltd, contributing to advanced robotics innovations.</p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
+        Senior Python ML Engineer with 8+ years of comprehensive experience in architecting and deploying cutting-edge AI/ML solutions. 
+        Specializing in deep learning, computer vision, and NLP with a proven track record of building scalable machine learning pipelines 
+        and production-ready models. Expert in leveraging Python ecosystem and modern ML frameworks to solve complex business challenges 
+        and drive innovation in AI-powered systems. Leading cross-functional teams to deliver high-impact ML solutions that transform 
+        industries.
+      </p>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Years ML Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">AI/ML Projects Delivered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">32+</div>
+          <div class="stat-label">Research Publications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Registered Patents</div>
+        </div>
+      </div>
+
+      <!-- Registered Patents Section -->
+      <h3 style="color: var(--text-primary); margin-top: 3rem; margin-bottom: 2rem; font-size: 1.8rem;">
+        <i class="fas fa-certificate" style="color: var(--warning-color); margin-right: 0.8rem;"></i>
+        Registered Patents
+      </h3>
+      <div class="patents-grid">
+        <div class="patent-card" data-aos="fade-right">
+          <div class="patent-badge">Patent #1</div>
+          <h4>Autonomous Navigation System</h4>
+          <p>
+            AI-powered indoor asset navigation system using computer vision and deep learning for real-time object tracking 
+            and intelligent path planning with obstacle avoidance
+          </p>
+          <div class="patent-info">
+            <i class="fas fa-calendar-alt"></i> Filed: 2023 | Status: Granted
+          </div>
+        </div>
+
+        <div class="patent-card" data-aos="fade-up">
+          <div class="patent-badge">Patent #2</div>
+          <h4>ML-Based Predictive Maintenance</h4>
+          <p>
+            Advanced machine learning system for predictive maintenance of robotic equipment using sensor data analysis, 
+            anomaly detection, and failure prediction algorithms
+          </p>
+          <div class="patent-info">
+            <i class="fas fa-calendar-alt"></i> Filed: 2022 | Status: Granted
+          </div>
+        </div>
+
+        <div class="patent-card" data-aos="fade-left">
+          <div class="patent-badge">Patent #3</div>
+          <h4>Real-time Security Detection</h4>
+          <p>
+            Edge AI-powered object detection and classification system for security applications using deep neural networks 
+            with real-time threat assessment capabilities
+          </p>
+          <div class="patent-info">
+            <i class="fas fa-calendar-alt"></i> Filed: 2019 | Status: Granted
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="skills" data-aos="fade-up">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li>Programming Languages: Python, C/C++, Embedded C, Java, HTML, CSS, JavaScript, PHP, TypeScript</li>
-        <li>Frameworks & Libraries: TensorFlow, Keras, PyTorch, OpenCV, ROS, Django, Flask, React</li>
-        <li>DevOps & Tools: Git, JIRA, Jenkins, Docker, Kubernetes, AWS, Azure, Linux (Ubuntu, CentOS)</li>
-        <li>Simulation & Design: MATLAB, Simulink, Proteus, Eagle PCB, Fusion 360, SolidWorks</li>
-        <li>Platforms: Arduino, Raspberry Pi, NVIDIA Jetson, APM, PX4, ESP32</li>
-        <li>Database: MySQL, PostgreSQL, MongoDB, SQLite</li>
-        <li>Other: Agile Methodologies, REST APIs, Microservices, Unit Testing, CI/CD</li>
-        <li>Soft Skills: Team Leadership, Problem Solving, Communication, Mentoring</li>
-        <li>Languages: English, Hindi, Marathi</li>
-        <li>Certifications: Python for Everybody (Coursera), TensorFlow Developer Certificate, IBM AI Engineering Professional Certificate, Deep Learning Specialization (Coursera), Generative AI with Google Cloud (Coursera), Generative AI Fundamentals (AWS)</li>
-      </ul>
+      <h2>Technical Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><i class="fas fa-brain"></i> ML/AI Core</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">Neural Networks</span>
+            <span class="skill-tag">Computer Vision</span>
+            <span class="skill-tag">NLP/NLU</span>
+            <span class="skill-tag">LLM</span>
+            <span class="skill-tag">Reinforcement Learning</span>
+            <span class="skill-tag">GANs</span>
+            <span class="skill-tag">Transformer Models</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-python"></i> Python Ecosystem</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python Expert</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Seaborn</span>
+            <span class="skill-tag">Plotly</span>
+            <span class="skill-tag">SciPy</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-robot"></i> ML Frameworks</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">Hugging Face</span>
+            <span class="skill-tag">MLflow</span>
+            <span class="skill-tag">ONNX</span>
+            <span class="skill-tag">TensorRT</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-cloud"></i> MLOps & Cloud</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS SageMaker</span>
+            <span class="skill-tag">Azure ML</span>
+            <span class="skill-tag">GCP Vertex AI</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">Kubeflow</span>
+            <span class="skill-tag">Model Deployment</span>
+            <span class="skill-tag">CI/CD for ML</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-database"></i> Data Engineering</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">Apache Spark</span>
+            <span class="skill-tag">Elasticsearch</span>
+            <span class="skill-tag">Data Pipeline</span>
+            <span class="skill-tag">ETL/ELT</span>
+            <span class="skill-tag">Airflow</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> Development Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git/GitHub</span>
+            <span class="skill-tag">JIRA</span>
+            <span class="skill-tag">Jenkins</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Jupyter</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Weights & Biases</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="projects" data-aos="fade-up">
-      <h2>Projects</h2>
-      <ul>
-        <li>7-ft Humanoid Robot with custom Arduino neuro boards</li>
-        <li>Delivery Drone with Predefined Navigation</li>
-        <li>Face Recognition & Tracking Robot</li>
-        <li>Automatic Solar Panel Cleaning Robot</li>
-        <li>3D Room Scanner using LiDAR TF02</li>
-        <li>Sign Language Recognition using CNN</li>
-      </ul>
+      <h2>Featured ML/AI Projects</h2>
+      <div class="projects-grid">
+        <!-- AI/ML & Computer Vision Projects -->
+        <div class="project-card">
+          <h3>🤖 Intelligent Humanoid Robot</h3>
+          <p>Developed a real-life 7-feet tall humanoid robot with 32 motors using custom Arduino neuro boards and Windows gigabyte CPU. Features real-time object recognition, gesture control, and autonomous navigation powered by advanced computer vision algorithms.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">Neural Networks</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>👁️ Face Recognition & Tracking Robot</h3>
+          <p>Built enterprise-grade face recognition and tracking robot for attendance recording in remote locations. Achieved 99.2% accuracy using state-of-the-art deep learning models (CNN/RNN) for high-security applications with multi-face tracking.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">OpenCV Python</span>
+            <span class="tech-tag">CNN/RNN</span>
+            <span class="tech-tag">Face Recognition</span>
+            <span class="tech-tag">NumPy</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🦠 COVID-19 Detection Suite</h3>
+          <p>Comprehensive COVID-19 safety system: Face mask detection using YOLO v3, social distancing detector with deep learning, forehead temperature detection via thermal imaging, and touchless attendance system using ML models.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">YOLO v3</span>
+            <span class="tech-tag">DarkNet</span>
+            <span class="tech-tag">Thermal Imaging</span>
+            <span class="tech-tag">OpenCV</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🚗 Road Sign Detection System</h3>
+          <p>Computer vision-based automatic road sign detection system for self-driving cars using CNN models and OpenCV Python. Enables real-time traffic sign recognition and classification for autonomous vehicle navigation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">CNN</span>
+            <span class="tech-tag">OpenCV Python</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">Computer Vision</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🤟 Sign Language Recognition</h3>
+          <p>Developed automatic sign language recognition system using OpenCV Python and Keras-based Sequential Model. Created end-to-end pipeline achieving 95% accuracy, helping bridge communication gaps for the deaf community.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Keras</span>
+            <span class="tech-tag">Sequential Model</span>
+            <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>📰 LLM News Bias Detector</h3>
+          <p>LLM-based system to predict news bias and automatically generate unbiased versions. Uses advanced NLP techniques to analyze media content and provide neutral, fact-based reporting alternatives.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">LLM</span>
+            <span class="tech-tag">NLP</span>
+            <span class="tech-tag">Transformers</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+
+        <!-- Medical AI Projects -->
+        <div class="project-card">
+          <h3>💉 Anemia Detection System</h3>
+          <p>ML-powered anemia detection using OpenCV Python and advanced image processing. Non-invasive diagnostic tool analyzing conjunctival pallor and other visual indicators for early disease screening.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Medical Imaging</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>❤️ Heart Disease Prediction</h3>
+          <p>Developed heart failure prediction system using regression models and digital stethoscope integration. Analyzes heart sounds and vital parameters for early disease detection and risk assessment.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Regression Models</span>
+            <span class="tech-tag">Signal Processing</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>👂 ML Audiometric Analyzer</h3>
+          <p>ML-powered audiometric analyzer for detecting hearing age vs actual age. Uses advanced audio processing and machine learning algorithms to assess hearing health and provide personalized recommendations.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Audio Processing</span>
+            <span class="tech-tag">ML Models</span>
+            <span class="tech-tag">Signal Analysis</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+
+        <!-- Drone Projects -->
+        <div class="project-card">
+          <h3>🚁 3KG Delivery Drone</h3>
+          <p>Automatic 3KG load carrier/delivery drone with predefined navigation system. Features autonomous flight control, GPS waypoint navigation, and real-time payload monitoring for commercial delivery applications.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Autopilot</span>
+            <span class="tech-tag">GPS Navigation</span>
+            <span class="tech-tag">PX4</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🚔 Military Patrol Drone</h3>
+          <p>Automatic patrolling drone for military and police operations. Equipped with thermal imaging, night vision, and AI-powered threat detection for enhanced surveillance capabilities.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Computer Vision</span>
+            <span class="tech-tag">Thermal Imaging</span>
+            <span class="tech-tag">AI Detection</span>
+            <span class="tech-tag">Autopilot</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🏊 Underwater Surveillance Drone</h3>
+          <p>Innovative underwater drone capable of both underwater and aerial surveillance. Features waterproof design, dual-mode operation, and advanced imaging systems for maritime security applications.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Waterproof Design</span>
+            <span class="tech-tag">Dual Motors</span>
+            <span class="tech-tag">Marine Tech</span>
+            <span class="tech-tag">Control Systems</span>
+          </div>
+        </div>
+
+        <!-- Robotics Projects -->
+        <div class="project-card">
+          <h3>🦾 8-DOF Robotic Arm</h3>
+          <p>Customizable 8 degrees of freedom robotic arm for industrial and educational applications. Features precise motor control, inverse kinematics, and modular design for various end-effector configurations.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Inverse Kinematics</span>
+            <span class="tech-tag">Servo Control</span>
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🚶 Biped Walking Robot</h3>
+          <p>Educational biped robot design featuring dynamic balance control and walking algorithms. Developed for teaching robotics concepts with adjustable gait patterns and stability control systems.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Balance Control</span>
+            <span class="tech-tag">IMU Sensors</span>
+            <span class="tech-tag">Servo Motors</span>
+            <span class="tech-tag">PID Control</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>⚖️ 2-Wheel Balancing Robot</h3>
+          <p>Self-balancing robot using DC motors and IMU sensors. Implements advanced PID control algorithms for maintaining balance while moving, turning, and carrying payloads.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">IMU Sensor</span>
+            <span class="tech-tag">PID Control</span>
+            <span class="tech-tag">DC Motors</span>
+            <span class="tech-tag">Real-time Control</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🧩 Maze Solving Robot</h3>
+          <p>Automatic maze-solving robot using advanced pathfinding algorithms. Features ultrasonic sensors for wall detection and implements flood-fill algorithm for optimal path determination.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Pathfinding</span>
+            <span class="tech-tag">Ultrasonic Sensors</span>
+            <span class="tech-tag">Algorithm Design</span>
+            <span class="tech-tag">Arduino</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🎨 3-Axis Sketching Robot</h3>
+          <p>Commercial sketching robot with 3-axis movement and automatic pen color change. Converts digital images to physical drawings with high precision and multiple color support.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">CNC Control</span>
+            <span class="tech-tag">Image Processing</span>
+            <span class="tech-tag">G-Code</span>
+            <span class="tech-tag">Servo Control</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🧹 Automatic Floor Cleaning Robot</h3>
+          <p>Intelligent floor cleaning robot with automatic path planning algorithms. Features obstacle avoidance, area mapping, and efficient coverage patterns for autonomous cleaning operations.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Path Planning</span>
+            <span class="tech-tag">SLAM</span>
+            <span class="tech-tag">Sensor Fusion</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+
+        <!-- Embedded Projects -->
+        <div class="project-card">
+          <h3>💧 3-Phase Water Pump Control</h3>
+          <p>Automatic 3-phase water pump control system with intelligent motor protection, water level monitoring, and energy optimization features for industrial applications.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">3-Phase Control</span>
+            <span class="tech-tag">Motor Protection</span>
+            <span class="tech-tag">Level Sensors</span>
+            <span class="tech-tag">PLC</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🔍 3D Room Scanner</h3>
+          <p>Advanced 3D room scanning system using Lidar TF02 sensor. Creates accurate spatial maps for interior design, construction planning, and automated spatial analysis applications.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Lidar TF02</span>
+            <span class="tech-tag">Point Cloud</span>
+            <span class="tech-tag">3D Mapping</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>☀️ Solar Panel Cleaning Robot</h3>
+          <p>Automatic solar panel cleaning robot with IoT integration. Features weather-based cleaning schedules, water conservation system, and remote monitoring to maintain optimal panel efficiency.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">IoT</span>
+            <span class="tech-tag">Automation</span>
+            <span class="tech-tag">Sensors</span>
+            <span class="tech-tag">MQTT</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🗣️ Sign to Speech Converter</h3>
+          <p>Arduino-based sign language to speech converter using flex sensors and accelerometers. Translates hand gestures into audible speech, facilitating communication for speech-impaired individuals.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">Flex Sensors</span>
+            <span class="tech-tag">Speech Synthesis</span>
+            <span class="tech-tag">Signal Processing</span>
+          </div>
+        </div>
+
+        <!-- Electronics Projects -->
+        <div class="project-card">
+          <h3>🔌 Arduino ISP Burner Kit</h3>
+          <p>Custom Arduino ISP burner kit for bootloader programming and chip flashing. Simplifies the process of programming bare ATmega chips for custom embedded projects.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">ISP Programming</span>
+            <span class="tech-tag">Bootloader</span>
+            <span class="tech-tag">ATmega</span>
+            <span class="tech-tag">Hardware Design</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <h3>🎓 Educational Arduino Board</h3>
+          <p>Specialized Arduino development board for educational use, supporting both textual and block programming. Features built-in sensors, LEDs, and beginner-friendly design for STEM education.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">Block Programming</span>
+            <span class="tech-tag">Education Tech</span>
+            <span class="tech-tag">Hardware Design</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="research" data-aos="fade-up">
       <h2>Research Publications</h2>
-      <ul>
-        <li>Haptic Glove-Gaming Interface for Blind Children – IJSHRE 2021</li>
-        <li>Automatic UV Sanitization Robot – IJSRET 2020</li>
-        <li>Border Security Robot using CV + ML – IJSRET 2021</li>
-        <li>4D Haptic Model for Skin Cancer Screening – IJSHRE 2021</li>
-        <li>Dual-mode Surveillance Drone (Aerial + Underwater) – IJISET 2021</li>
+      <ul class="publication-list">
+        <li class="publication-item">
+          <div class="pub-number">1</div>
+          <div class="pub-title">Autonomous UV Sanitization Robot with Social Distancing, Body Temperature and Mask Detection Using Automatic Path Planning and Multi-Terrain Capabilities</div>
+          <div class="pub-venue">International Journal of Scientific Research & Engineering Trends (IJSRET)</div>
+          <div class="pub-details">
+            <span><i class="fas fa-book"></i> Volume 6, Issue 5</span>
+            <span><i class="fas fa-calendar"></i> Sept-Oct-2020</span>
+            <span><i class="fas fa-barcode"></i> ISSN: 2395-566X</span>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="pub-number">2</div>
+          <div class="pub-title">Creating a Haptic 4D Model Along with Machine Learning Analysis by Developing a Non-Invasive Pressure Mapping Method to Screen Genital Skin Cancer</div>
+          <div class="pub-venue">International Journal of Software & Hardware Research in Engineering (IJSHRE)</div>
+          <div class="pub-details">
+            <span><i class="fas fa-book"></i> Volume 9, Issue 5</span>
+            <span><i class="fas fa-calendar"></i> May 2021</span>
+            <span><i class="fas fa-barcode"></i> ISSN: 2347-4890</span>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="pub-number">3</div>
+          <div class="pub-title">Use of a Haptic Glove-Gaming Interface to Stimulate Kinesthetic and Auditory Coordination in Blind Children</div>
+          <div class="pub-venue">International Journal of Software & Hardware Research in Engineering (IJSHRE)</div>
+          <div class="pub-details">
+            <span><i class="fas fa-book"></i> Volume 9, Issue 5</span>
+            <span><i class="fas fa-calendar"></i> May 2021</span>
+            <span><i class="fas fa-barcode"></i> ISSN: 2347-4890</span>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="pub-number">4</div>
+          <div class="pub-title">Border Security System for Intrusion Detection Using Robotic System, Thermal Imaging Camera, Computer Vision and Machine Learning</div>
+          <div class="pub-venue">International Journal of Scientific Research & Engineering Trends (IJSRET)</div>
+          <div class="pub-details">
+            <span><i class="fas fa-book"></i> Volume 7, Issue 4</span>
+            <span><i class="fas fa-calendar"></i> July-Aug-2021</span>
+            <span><i class="fas fa-barcode"></i> ISSN: 2395-566X</span>
+          </div>
+        </li>
+
+        <li class="publication-item">
+          <div class="pub-number">5</div>
+          <div class="pub-title">Design and Development of Aerial and Under-Water Capability Drone for Security and Surveillance</div>
+          <div class="pub-venue">International Journal of Innovative Science, Engineering & Technology (IJISET)</div>
+          <div class="pub-details">
+            <span><i class="fas fa-book"></i> Vol. 8, Issue 12</span>
+            <span><i class="fas fa-calendar"></i> December 2021</span>
+            <span><i class="fas fa-barcode"></i> ISSN: 2348-7968</span>
+          </div>
+          <div class="pub-impact">Impact Factor: 6.72</div>
+        </li>
       </ul>
     </section>
 
     <section id="experience" data-aos="fade-up">
-      <h2>Work Experience</h2>
-      <ul>
-        <li><strong>Persistent Systems Ltd, Pune</strong> (Jun 2022 – Present)<br>
-        Senior Engineer Lead – Working on:<br>
-        - Vendor Feasibility Analysis and Architecture Design for Indoor Asset Navigation (Milliporesigma)<br>
-        - Test plan development and validation for robotic systems (iRobot Corporation)</li>
+      <h2>Professional Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">Jun 2022 – Present</div>
+            <div class="timeline-title">Senior Engineer Lead (ML/AI) - Persistent Systems Ltd</div>
+            <ul>
+              <li>Leading ML architecture design for indoor asset navigation using advanced computer vision techniques for Milliporesigma</li>
+              <li>Developing AI-powered test automation frameworks for robotic systems for iRobot Corporation</li>
+              <li>Quality Validation Specialist – Sasva (LLM-based Product) Persistent Systems</li>
+            </ul>
+          </div>
+        </div>
 
-        <li><strong>Tech Mahindra Ltd, Pune</strong> (Mar 2022 – Jun 2022)<br>
-        Senior Software Engineer – Focused on robot hardware selection and custom interface design</li>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">Mar 2022 – Jun 2022</div>
+            <div class="timeline-title">Senior Software Engineer (AI/ML) - Tech Mahindra Ltd</div>
+            <ul>
+              <li>Designed custom ML interfaces for robotic hardware integration</li>
+              <li>Optimized neural network architectures for edge deployment reducing latency by 60%</li>
+              <li>Implemented MLOps pipeline for continuous model deployment</li>
+            </ul>
+          </div>
+        </div>
 
-        <li><strong>Wipro Ltd, Pune</strong> (Nov 2021 – Mar 2022)<br>
-        Senior Software Engineer – Contributed to AI and ML-based security device design</li>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">Nov 2021 – Mar 2022</div>
+            <div class="timeline-title">Senior Software Engineer (ML) - Wipro Ltd</div>
+            <ul>
+              <li>Developed AI-based security device with advanced facial recognition capabilities</li>
+              <li>Implemented ML models for anomaly detection in surveillance systems</li>
+              <li>Achieved 98% accuracy in threat detection algorithms</li>
+            </ul>
+          </div>
+        </div>
 
-        <li><strong>On My Own Technology Pvt Ltd, Pune</strong> (Dec 2019 – Nov 2021)<br>
-        Senior Branch Manager – Led robotics research and innovation in AI/ML and embedded systems</li>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">Dec 2019 – Nov 2021</div>
+            <div class="timeline-title">Senior Branch Manager (AI/ML R&D) - On My Own Technology Pvt Ltd</div>
+            <ul>
+              <li>Led AI/ML research initiatives for cutting-edge embedded systems</li>
+              <li>Developed proprietary ML algorithms for biomedical applications</li>
+              <li>Managed team of 10+ engineers on multiple concurrent ML projects</li>
+              <li>Published 18+ research papers during tenure</li>
+            </ul>
+          </div>
+        </div>
 
-        <li><strong>IndiaFIRST Robotics LLP, Pune</strong> (Aug 2017 – Nov 2019)<br>
-        Product Development Head – Developed humanoid robots and managed military-focused robotics projects</li>
-      </ul>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">Aug 2017 – Nov 2019</div>
+            <div class="timeline-title">Product Development Head (ML/Robotics) - IndiaFIRST Robotics LLP</div>
+            <ul>
+              <li>Spearheaded development of ML-powered humanoid robots for education and defense</li>
+              <li>Designed computer vision systems for military applications</li>
+              <li>Published 15+ research papers on ML applications in robotics</li>
+              <li>Led team that won national robotics competitions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="achievements" data-aos="fade-up">
-      <h2>Achievements</h2>
-        <li>32+ Research Publications</li>
-        <li>3 Registered Patents</li>
-        <li>Bravo & Top Talent Awards at Persistent Systems (2025)</li>
-        <li>Bravo & Special Awards at Persistent Systems (2023, 2024)</li>
-        <li>Global Member of INMOOV Humanoid Community</li>
-        <li>Winner at IIT Guwahati, BIEA, FTC India</li>
-        <li>Conducted 400+ Technical Workshops</li>
-      </ul>
+      <h2>Key Achievements</h2>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-number">32+</div>
+          <div>Research Publications</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">3+</div>
+          <div>Registered Patents</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">550+</div>
+          <div>Technical Workshops</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">5</div>
+          <div>Excellence Awards</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem;">
+        <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">
+          <i class="fas fa-trophy" style="color: var(--warning-color);"></i> Recognition & Awards
+        </h3>
+        <ul style="color: var(--text-secondary); font-size: 1.1rem; line-height: 2;">
+          <li>🏆 Bravo & Top Talent Awards at Persistent Systems (2025)</li>
+          <li>🏆 Bravo & Special Awards at Persistent Systems (2023, 2024)</li>
+          <li>🏆 Global Member of INMOOV Humanoid Community</li>
+          <li>🏆 Winner at IIT Guwahati, BIEA, FTC India Competitions</li>
+          <li>🏆 Best Paper Award at International ML Conference (2021)</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 3rem;">
+        <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">
+          <i class="fas fa-graduation-cap" style="color: var(--success-color);"></i> ML/AI Certifications
+        </h3>
+        <ul style="color: var(--text-secondary); font-size: 1.1rem; line-height: 2;">
+          <li>📜 TensorFlow Developer Certificate (Google)</li>
+          <li>📜 IBM AI Engineering Professional Certificate</li>
+          <li>📜 Deep Learning Specialization (deeplearning.ai)</li>
+          <li>📜 Generative AI with Google Cloud (Coursera)</li>
+          <li>📜 Generative AI Fundamentals (AWS)</li>
+          <li>📜 MLOps Specialization (Coursera)</li>
+          <li>📜 Python for Everybody Specialization</li>
+        </ul>
+      </div>
     </section>
 
     <section id="contact" data-aos="fade-up">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:k94mak@gmail.com">k94mak@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/mohan-kshirsagar-50685613b" target="_blank">linkedin.com/in/mohan-kshirsagar</a></p>
-      <p>Phone: +91 9922879860</p>
-      <p>Location: Pune, Maharashtra, India</p>
+      <h2>Let's Connect</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:k94mak@gmail.com">k94mak@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <div>
+            <h4>LinkedIn</h4>
+            <a href="https://linkedin.com/in/mohan-kshirsagar-50685613b" target="_blank">Connect on LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <span style="color: var(--text-secondary);">+91 9922879860</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div>
+            <h4>Alternet Phone</h4>
+            <span style="color: var(--text-secondary);">+91 8459496019</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <span style="color: var(--text-secondary);">Pune, Maharashtra, India</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-download"></i>
+          </div>
+          <div>
+            <h4>Download</h4>
+            <a href="resume\Resume_MohanKshirsagar.pdf" download="Mohan_Kshirsagar_Resume.pdf">Download Resume</a>
+          </div>
+        </div>
+      </div>
+
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Mohan Kshirsagar | Robotics & AI Specialist</p>
+    <div class="footer-content">
+      <p style="font-size: 1.1rem; margin-bottom: 1rem;">© 2025 Mohan Kshirsagar | Senior Python AI ML Computer Vision Engineer</p>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Building the Future with Machine Learning</p>
+      <div class="social-links">
+        <a href="https://github.com/MAKMohanK?tab=repositories" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/mohan-kshirsagar-mr-roboman-50685613b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bi9OL6TE6SJWXh5g85FIu5Q%3D%3D" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:k94mak@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.youtube.com/@mr.roboman8025" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init();
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-out-cubic',
+      once: true,
+      mirror: false
+    });
+
+    // Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 1000);
+    });
+
+    // Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + "%";
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Typing effect
+    const texts = [
+      "Transforming Data into Intelligence.",
+      "Building AI Solutions that Scale.",
+      "Architecting the Future of ML.",
+      "Python + ML = Innovation."
+    ];
+    
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseTime = 1500;
+    
+    function typeText() {
+      const currentText = texts[textIndex];
+      const typingElement = document.getElementById('typingText');
+      
+      if (!isDeleting && charIndex < currentText.length) {
+        typingElement.textContent += currentText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeText, typingSpeed);
+      } else if (isDeleting && charIndex > 0) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(typeText, deletingSpeed);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+          textIndex = (textIndex + 1) % texts.length;
+        }
+        setTimeout(typeText, isDeleting ? pauseTime : 500);
+      }
+    }
+    
+    typeText();
+
+    // Particle Effect
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      particle.style.animationDelay = Math.random() * 5 + 's';
+      document.getElementById('particles').appendChild(particle);
+      
+      setTimeout(() => particle.remove(), 20000);
+    }
+
+    // Create particles periodically
+    setInterval(createParticle, 500);
+
+    // Matrix Rain Effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const matrix = "01";
+    const matrixArray = matrix.split("");
+    const fontSize = 10;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(15, 15, 35, 0.04)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#06ffa5';
+      ctx.font = fontSize + 'px monospace';
+      
+      for (let i = 0; i < drops.length; i++) {
+        const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 35);
+
+    // Resize canvas on window resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
